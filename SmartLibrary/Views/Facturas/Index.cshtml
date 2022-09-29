@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SmartLibrary.Entities.Factura>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCreacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoDocument)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.ClienteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoDocument.TipoDocumentId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FacturaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FacturaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FacturaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
